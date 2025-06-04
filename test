@@ -1,0 +1,80 @@
+<!-- data binding -->
+
+<!-- interpolation -->
+<h1>{{title}}</h1>
+<h2>{{1+2}}</h2>
+
+<app-login></app-login>
+<app-nav-bar></app-nav-bar>
+
+<!-- property binding -->
+<img [src]="imageUrl" />
+
+<!-- Attribute binding -->
+<button [attr.aria-label]="areaLabel">Click me</button>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Last Name</th>
+  </tr>
+  <tr>
+    <td>Chamelee</td>
+    <td>Gurusinghe</td>
+  </tr>
+  <tr>
+    <td>John</td>
+    <td>Doe</td>
+    <td>20</td>
+  </tr>
+  <tr>
+    <td [attr.colspan]="colSpan">
+      this is a test line to get a long sentence in the table
+    </td>
+  </tr>
+</table>
+
+<button [disabled]="isDisabled">button 1</button>
+<br /><br />
+<button disabled="{{isDisabled}}">button 2</button>
+<!-- string interpollation doesnt work for this -->
+<br />
+<img src="{{imageUrl}}" />
+<!-- string interpolation works for this -->
+
+<!-- Style binding (dynamically set inline styles based on component data)-->
+<p [style.color]="color" [style.backgroundColor]="backgroundColor">
+  check style binding here.
+</p>
+<!-- have connection to the property -->
+<p [style.color]="color" [style.backgroundColor]="'blue'">
+  check style binding here.
+</p>
+<!-- hardcoded and lose connection to the property and can't change dynamically -->
+
+<!-- Class Binding (dynamically add or remove css classes based on component properties)-->
+<h2 [class.active]="isActive" [class.inactive]="!isActive">Hello</h2>
+<h2 [class.inactive]="name=='Chamelee'" [class.active]="name!='Chamelee'">
+  Hello again
+</h2>
+
+<!-- Event Binding (capture user events from the view and call a method in response ) -->
+<button (click)="onClick()">Click me</button>
+<br />
+
+<!-- Using key modifiers -->
+<input placeholder="text" (keydown)="keydown($event)" />
+<br />
+<input placeholder="simplified" (keydown.enter)="keydownSimplified()" />
+<br />
+
+<!-- Template variable -->
+<input
+  #templateVariable
+  placeholder="template variable"
+  (keyup)="keydownText(templateVariable)"
+/>
+<h3>{{keydownInputText}}</h3>
+
+<!-- Two-way data binding (sync data between the view and the model which allows two way communication-data can flow both ways)-->
+ 
